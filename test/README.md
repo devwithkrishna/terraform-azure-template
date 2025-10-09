@@ -7,7 +7,7 @@
 - Internet access for provider plugins
 
 ### Initialize the test module
-1. Open a terminal in the test/ folder.
+1. Open a terminal in the test/ folder. [Remove the `go.mod` and `go.sum` files already existing]
 2. Initialize the Go module (replace module path):
    - Example:
     ```
