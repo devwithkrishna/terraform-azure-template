@@ -41,4 +41,32 @@ jobs:
         echo "Using repo: ${REPO_NAME}"
         echo "Using org: ${ORG_NAME}"
         echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
-        echo "ORG_NAME=${ORG_NA
+        echo "ORG_NAME=${ORG_NAME}}" >> $GITHUB_ENV
+
+    - name: Replace placeholders in README.md
+      run: |
+        echo "Replacing placeholders..."
+        find . -type f -name "README.md" | while read file; do
+          echo "Processing $file"
+          sed -i "s/{{REPO_NAME}}/${REPO_NAME}/g" "$file"
+          sed -i "s/{{ORG_NAME}}/${ORG_NAME}/g" "$file"
+        done
+
+    - name: Show diff for verification
+      run: |
+        echo "Checking for changes..."
+        git status
+        git diff -- README.md || true
+
+    - name: Commit and push changes
+      run: |
+        if [[ -n "$(git status --porcelain)" ]]; then
+          echo "Changes detected. Committing..."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: auto-fill README placeholders"
+          git push
+        else
+          echo "No changes detected, skipping commit."
+        fi
