@@ -48,8 +48,8 @@ jobs:
         echo "Replacing placeholders..."
         find . -type f -name "README.md" | while read file; do
           echo "Processing $file"
-          sed -i "s/{{REPO_NAME}}/${REPO_NAME}/g" "$file"
-          sed -i "s/{{ORG_NAME}}/${ORG_NAME}/g" "$file"
+          sed -i "s|{{REPO_NAME}}|${REPO_NAME}|g" "$file"
+          sed -i "s|{{ORG_NAME}}|${ORG_NAME}|g" "$file"
         done
 
     - name: Show diff for verification
