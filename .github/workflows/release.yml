@@ -1,4 +1,4 @@
-name: create release
+name: create-release
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ jobs:
         github_app_private_key: ${{ secrets.TOKEN_GENERATOR_PRIVATE_KEY }}
 
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         token: ${{ steps.token-generation.outputs.token }}
 
