@@ -11,7 +11,7 @@
 2. Initialize the Go module (replace module path):
    - Example:
     ```
-     go mod init github.com/abc/wwe/test
+     go mod init github.com/{ORG_NAME}/{REPO_NAME}/test
     ```
 
 ### Install test dependencies (example)
