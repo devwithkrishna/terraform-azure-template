@@ -41,7 +41,7 @@ jobs:
         echo "Using repo: ${REPO_NAME}"
         echo "Using org: ${ORG_NAME}"
         echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
-        echo "ORG_NAME=${ORG_NAME}}" >> $GITHUB_ENV
+        echo "ORG_NAME=${ORG_NAME}" >> $GITHUB_ENV
 
     - name: Replace placeholders in README.md
       run: |
