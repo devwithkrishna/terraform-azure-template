@@ -36,5 +36,5 @@
 # # variable "variable_name" {
 # #   description = "variable description"
 # #   type        = data type
-# #   default     = "default value (if any)"
+# #   default     = "default value (if any)" q
 # # }
