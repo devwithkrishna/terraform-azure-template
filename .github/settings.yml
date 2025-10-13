@@ -82,6 +82,22 @@ labels:
   color: "#2088ff"
   description: An issue related to GitHub Actions.
 
+- name: patch
+  color: 0e8a16
+  description: A bug fix or patch.
+
+- name: minor
+  color: d4c5f9
+  description: A minor change or improvement.
+
+- name: major
+  color: ffa198
+  description: A major change that might break backward compatibility.
+
+- name: first-release
+  color: "#5f4449"
+  description: The first release of this project.
+
 # See https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions for available options
 teams:
 - name: terraform-reviewers
