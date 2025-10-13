@@ -1,0 +1,62 @@
+name: 📂 Update README
+
+on:
+  push:
+    branches:
+    - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Token generator
+      uses: githubofkrishnadhas/github-access-using-githubapp@v2
+      id: token-generation
+      with:
+        github_app_id: ${{ secrets.TOKEN_GENERATOR_APPID }}
+        github_app_private_key: ${{ secrets.TOKEN_GENERATOR_PRIVATE_KEY }}
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install tree utility
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tree
+
+    - name: Generate and inject folder tree
+      run: |
+        set -e
+        tree_output=$(tree -I ".git|.github|__pycache__|*.pyc" -a)
+        escaped_tree=$(printf '%s\n' "$tree_output")
+
+        awk -v new_content="$escaped_tree" '
+          /<!-- BEGIN_REPO_TREE -->/ { print; print "```"; print new_content; print "```"; in_block=1; next }
+          /<!-- END_REPO_TREE -->/ { in_block=0 }
+          !in_block
+        ' README.md > README.tmp && mv README.tmp README.md
+
+    - name: configure terraform-docs
+      run: |
+        curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.18.0/terraform-docs-v0.18.0-$(uname)-amd64.tar.gz
+        tar -xzf terraform-docs.tar.gz
+        chmod +x terraform-docs
+        sudo mv terraform-docs /usr/bin/terraform-docs
+        rm -rf terraform-docs.tar.gz
+        terraform-docs -v
+
+    - name: generate terraform docs
+      run: |
+        terraform-docs markdown table --output-file README.md --output-mode inject .
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        git commit -m "docs: update README [skip ci]" with terraform-docs and repo structure || echo "No changes to commit"
+        git push
