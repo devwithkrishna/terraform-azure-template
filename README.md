@@ -8,7 +8,7 @@
 
 ## Examples
 
-Please find the [examples]((https://github.com/{ORG_NAME}/{REPO_NAME}//tree/main/examples)) here 
+Please find the [examples]((https://github.com/{ORG_NAME}/{REPO_NAME}/tree/main/examples)) here 
 
 ## 📂 Structure
 
