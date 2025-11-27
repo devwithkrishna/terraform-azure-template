@@ -25,7 +25,7 @@ jobs:
         github_app_private_key: ${{ secrets.TOKEN_GENERATOR_PRIVATE_KEY }}
 
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Install tree utility
       run: |
@@ -68,7 +68,7 @@ jobs:
         github_app_private_key: ${{ secrets.TOKEN_GENERATOR_PRIVATE_KEY }}
 
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Render terraform docs inside the README.md and push changes back to PR branch
       uses: terraform-docs/gh-actions@v1.4.1
