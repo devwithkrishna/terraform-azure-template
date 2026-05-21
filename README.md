@@ -4,7 +4,22 @@
 [![create-release](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/release.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/release.yml)
 [![auto-fill-readme](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/auto-fill-readme.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/auto-fill-readme.yml)
 
+
+<!-- Space: devwithkrishna -->
+<!-- Parent: Terraform -->
+
+<!-- Macro: :toc:
+     Template: ac:toc
+     Printable: 'false'
+     MinLevel: 2 -->
+
+
 # {REPO_NAME}
+
+<!-- Include: docs/warning.tpl -->
+
+:toc:
+
 
 ## Examples
 
@@ -38,3 +53,6 @@ terraform-docs markdown table --output-file README.md --output-mode inject .
 
 
 #### This repository is maintained by {ORG_NAME}.
+
+
+<!-- Include: docs/footer.tpl -->
