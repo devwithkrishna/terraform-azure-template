@@ -1,6 +1,6 @@
 ## Contributing
 
-To modify the documentation, Please submit a PR on [GitHub](https://github.com/devwithkrishna/markdown2confluence/pulls).
+To modify the documentation, Please submit a PR on [GitHub](https://github.com/devwithkrishna/{REPO_NAME}/pulls).
 
 <!-- Macro: :footer:
      Template: ac:box
