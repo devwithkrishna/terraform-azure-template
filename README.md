@@ -3,7 +3,7 @@
 [![update-readme](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/update-readme.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/update-readme.yml)
 [![create-release](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/release.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/release.yml)
 [![auto-fill-readme](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/auto-fill-readme.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/auto-fill-readme.yml)
-
+[![documentation](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/documentation.yml/badge.svg)](https://github.com/{ORG_NAME}/{REPO_NAME}/actions/workflows/documentation.yml)
 
 <!-- Space: devwithkrishna -->
 <!-- Parent: Terraform -->
