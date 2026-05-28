@@ -43,20 +43,22 @@ jobs:
         echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
         echo "ORG_NAME=${ORG_NAME}" >> $GITHUB_ENV
 
-    - name: Replace placeholders in all README.md files
+    - name: Replace placeholders in any file
       run: |
-        echo "Replacing placeholders in all README.md files..."
-        find . -type f -iname "README.md" -print0 | while IFS= read -r -d '' file; do
-          echo "Processing $file"
-          sed -i "s|{REPO_NAME}|${REPO_NAME}|g" "$file"
-          sed -i "s|{ORG_NAME}|${ORG_NAME}|g" "$file"
+        echo "Replacing placeholders in any file..."
+        find . -type f ! -path './.git/*' -print0 | while IFS= read -r -d '' file; do
+          if grep -qE '(\{REPO_NAME\}|\{ORG_NAME\})' "$file"; then
+            echo "Processing $file"
+            sed -i "s|{REPO_NAME}|${REPO_NAME}|g" "$file"
+            sed -i "s|{ORG_NAME}|${ORG_NAME}|g" "$file"
+          fi
         done
 
     - name: Show diff for verification
       run: |
         echo "Checking for changes..."
         git status
-        git diff -- README.md || true
+        git diff -- . || true
 
     - name: Commit and push changes
       run: |
